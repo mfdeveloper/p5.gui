@@ -1,0 +1,36 @@
+{
+  "name": "p5.gui.variables",
+  "version": "1.0.0",
+  "description": "generates a graphical user interface for each of your variables",
+  "main": "libraries/p5.gui.js",
+  "directories": {
+    "example": "examples"
+  },
+  "files": [
+    "libraries/quicksettings.js"
+  ],
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/bitcraftlab/p5.gui.git"
+  },
+  "keywords": [
+    "p5js",
+    "p5.gui",
+    "p5-inspector",
+    "p5-variables",
+    "p5-settings"
+  ],
+  "author": "Martin Schneider",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/bitcraftlab/p5.gui/issues"
+  },
+  "homepage": "https://github.com/bitcraftlab/p5.gui#readme",
+  "dependencies": {
+    "dat.gui": "^0.7.6",
+    "p5": "^0.9.0"
+  }
+}
