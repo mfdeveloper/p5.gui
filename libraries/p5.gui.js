@@ -18,12 +18,12 @@
   // Create a GUI using QuickSettings (or DAT.GUI or ...)
   // You only need to pass a reference to the sketch in instance mode
 
-  // Usually you will call createGui(this, 'label');
-  p5.prototype.createGui = function(sketch, label, provider) {
+  // Usually you will call createGuiPanel(this, 'label');
+  p5.prototype.createGuiPanel = function(sketch, label, provider) {
 
-    // createGui(label) signature
+    // createGuiPanel(label) signature
     if ((typeof sketch) === 'string') {
-      return this.createGui(label, sketch, provider);
+      return this.createGuiPanel(label, sketch, provider);
     }
 
     // normally the sketch will just be embedded below the body
@@ -40,7 +40,7 @@
     }
 
     if(!('color' in sketch)) {
-      console.error(`${parent.id}: You need to pass the p5 sketch to createGui in instance mode!`);
+      console.error(`${parent.id}: You need to pass the p5 sketch to createGuiPanel in instance mode!`);
     }
 
     // default gui provider
@@ -50,12 +50,20 @@
 
     // create a gui using the provider
     if(provider === 'QuickSettings') {
-      if(QuickSettings) {
+      if(window[provider]) {
         console.log('Creating p5.gui powered by QuickSettings.');
         gui = new QSGui(label, parent, sketch);
       } else {
-        console.log('QuickSettings not found. Is the script included in your HTML?');
-        gui = new DummyGui(label, parent, sketch);
+        
+        if (typeof exports === "object" && typeof module === "object") {
+          QuickSettings = require('./quicksettings');
+          
+          console.log('Creating p5.gui powered by QuickSettings.');
+          gui = new QSGui(label, parent, sketch);
+        } else {
+          console.log('QuickSettings not found. Is the script included in your HTML?');
+          gui = new DummyGui(label, parent, sketch);
+        }
       }
     } else {
       console.log('Unknown GUI provider ' + provider);

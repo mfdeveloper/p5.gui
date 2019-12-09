@@ -1,6 +1,6 @@
 {
   "name": "p5.gui.variables",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "generates a graphical user interface for each of your variables",
   "main": "libraries/p5.gui.js",
   "directories": {
